@@ -3,6 +3,7 @@ module.exports = {
 	FreeRoute: [
 	'/',
 	'/login',
+	'/login/test2',
 	'/register'
 	]
 };

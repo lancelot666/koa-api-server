@@ -1,10 +1,11 @@
 //jwt封装方法
 const JWT = require('./jwt');
 //路由配置
-const router_list = require('../config/router_list');
-const FreeRoute = router_list['FreeRoute'];
+const FreeRoute = require('../config/router_list')['FreeRoute'];
 //公共方法和参数
 require('./common')(); 
+//获取token的方式,参数中获取或请求头中获取：1/0 --- body/header
+const type = 1;
 
 module.exports = function(ctx,next){
     try{
@@ -14,17 +15,26 @@ module.exports = function(ctx,next){
       }
       const req = ctx.request;
       let token = '';
-      if(req.method==='GET'){
-        if(!req.query||!req.query.token){
-          return global.showE('无权访问!(1)');
+      //从参数中获取token
+      if(type){
+        if(req.method==='GET'){
+          if(!req.query||!req.query.token){
+            return global.showE('无权访问!(1)');
+          }
+          token = req.query.token;
+        }else{
+          if(!req.body||!req.body.token){
+            return global.showE('无权访问!(2)');
+          }
+          token = req.body.token;
         }
-        token = req.query.token;
-      }else{
-        if(!req.body||!req.body.token){
-          return global.showE('无权访问!(2)');
-        }
-        token = req.body.token;
       }
+      //从请求头中获取token
+      else{
+        if(!req.headers.token) return global.showE('无权访问!(3)'); 
+        token = req.headers.token;
+      }
+      
       //解析token
       const expToken = JWT.checkToken(token);
       //token无效

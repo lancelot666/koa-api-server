@@ -6,13 +6,14 @@ const mysql = require('mysql'); //导入mysql模块
 user.get('/',async (ctx,next)=>{
 	console.log('这是User逻辑')
 	let token = global.checkToken(ctx.request.query.token);
+	ctx.response.status = 200;
 	ctx.response.body = token;
 	await next()
 	console.log('这是User逻辑执行完成')
 })
 
 // /user/list
-user.get('/list',async (ctx,next)=>{
+user.post('/list',async (ctx,next)=>{
 	console.log('/user/list')
 	ctx.response.body = 'list';
 	await next()

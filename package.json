@@ -1,5 +1,5 @@
 {
-  "name": "test1",
+  "name": "koa-api-server",
   "version": "1.0.0",
   "description": "test koa2",
   "main": "app.js",
