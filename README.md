@@ -1,5 +1,5 @@
 # koa-api-server
-一个配搭Mysql、JWT、路由拦截、日志功能的nodejs服务  
+一个配搭Mysql、redis、JWT、路由拦截、日志功能的nodejs服务  
 
 ****安装/启动：****
 
@@ -37,7 +37,8 @@ module.exports = model;
  (3) jwt.js --- token生成与校验方法。  
  (4) crypto.js --- 对jwt载荷加密方法。  
  (5) common.js --- 全局方法和变量。  
- (6) function.js --- 个人封装的方法。
+ (6) function.js --- 个人封装的方法。  
+ (7) redis.js --- 对redis封装的方法。  
 
 ****author：****  
 Lancelot666
