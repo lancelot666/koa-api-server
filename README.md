@@ -6,18 +6,25 @@
 npm install  
 nodemon app.js
 
-****使用：****
+****使用教程：****
+  
+举例：  
+访问url:  
+http:xxx.com/model/  
+http:xxx.com/model/list
 
-1、在controller文件夹新建目标路由文件,如model.js：  
-
-model.js:  
+  
+1、在controller文件夹中新建文件model.js,代码如下：  
+  
 const Router = require('koa-router');  
 const model = new Router();  
 
+  //get方法访问/model
 model.get('/',async (ctx,next)=>{  
 	return ctx.response.body = 'url is : /model , method is : GET';  
 })  
   
+  //post方法访问/model/list
 model.post('/list',async(ctx,next)=>{
 	return ctx.response.body = 'url is : /model/list , method is : POST';  
 })  
@@ -25,12 +32,15 @@ model.post('/list',async(ctx,next)=>{
 module.exports = model;  
   
 
+  
 2、把 '/model' 写入到 config/router_list.js ,解除/model的路由拦截。  
+
 3、地址栏访问：localhost:3000/model
 
 ****配置项：****
 
 1、mysql文件夹中配置数据库。  
+  
 2、utils文件夹中配置：  
  (1) check-route.js --- 路由拦截方法。(默认以token拦截)  
  (2) log_util.js --- 日志功能配置。(默认主动捕捉sql错误)  
