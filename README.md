@@ -7,9 +7,7 @@
 npm install  
 nodemon app.js
 ```
-<br/>  
 
-****使用教程：  ****  
 ****创建接口示例:  ****  
 localhost:3000/model  
 localhost:3000/model/list  
