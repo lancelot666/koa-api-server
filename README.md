@@ -8,30 +8,32 @@ nodemon app.js
 
 ****使用教程：****
   
-举例：  
-访问url:  
+创建接口:    
 http:xxx.com/model/  
 http:xxx.com/model/list
 
   
-1、在controller文件夹中新建文件model.js,代码如下：  
+步骤一：在controller文件夹中新建文件model.js,代码如下：  
   
+
+
 const Router = require('koa-router');  
 const model = new Router();  
 
-  //get方法访问/model
+  //接收get请求访问/model  
 model.get('/',async (ctx,next)=>{  
 	return ctx.response.body = 'url is : /model , method is : GET';  
 })  
   
-  //post方法访问/model/list
+  //接收post请求访问/model/list  
 model.post('/list',async(ctx,next)=>{
 	return ctx.response.body = 'url is : /model/list , method is : POST';  
 })  
 
 module.exports = model;  
   
-
+  
+  
   
 2、把 '/model' 写入到 config/router_list.js ,解除/model的路由拦截。  
 
